@@ -10,8 +10,8 @@
   "scripts": {
     "ng": "ng",
     "nge": "nge",
-    "dev": "concurrently \"ng serve\" \"electron .\" ",
-    "build": "npm i && ng build --prod=true --base-href ./ && electron-packager . pto --platform win32 --arch x64 --out dist/ && electron-installer-windows --src dist/pto-win32-x64/ --dest dist/installers/",
+    "dev": "concurrently \"npm run rebuild && ng serve\" \"electron . --watch\" ",
+    "build": "npm i && ng build --prod=true --base-href ./ && electron-packager . pto --platform win32 --arch x64 --out dist/",
     "setup": "electron-installer-windows --src dist/pto-win32-x64/ --dest dist/installers/",
     "test": "ng test",
     "lint": "ng lint",
@@ -32,6 +32,8 @@
     "@angular/pwa": "^0.803.20",
     "@angular/router": "~8.2.3",
     "@angular/service-worker": "~8.2.3",
+    "@types/bluebird": "^3.5.29",
+    "@types/validator": "^12.0.1",
     "angular-in-memory-web-api": "^0.9.0",
     "awesome-typescript-loader": "^5.2.1",
     "bootstrap": "^4.3.1",
@@ -53,6 +55,7 @@
     "rxjs": "~6.4.0",
     "sequelize-typescript": "^0.6.11",
     "tslib": "^1.10.0",
+    "uuid": "^3.3.3",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
@@ -63,6 +66,7 @@
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^8.9.5",
+    "@types/uuid": "^3.4.6",
     "codelyzer": "^5.0.0",
     "electron-rebuild": "^1.8.8",
     "jasmine-core": "~3.4.0",

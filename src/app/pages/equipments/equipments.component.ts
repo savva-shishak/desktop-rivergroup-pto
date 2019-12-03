@@ -20,17 +20,12 @@ export class EquipmentsComponent implements OnInit {
 
   public upload() {
     this.openList = false;
-
-    this.store.getEquips.subscribe(equips => {
-      this.equips = equips;
-      this.openList = true;
-    });
+    this.equips = this.store.equips;
+    this.openList = true;
   }
 
   ngOnInit() {
-    this.store.getEquips.subscribe(equips => {
-      this.equips = equips;
-      this.openList = true;
-    });
+    this.equips = this.store.equips;
+    this.openList = true;
   }
 }

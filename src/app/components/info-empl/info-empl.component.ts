@@ -1,9 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Empl, EmplJust, Equipment } from 'src/app/types';
 import { newEquip } from 'src/app/utility';
 import { DialogService } from 'src/app/services/dialog.service';
 import { StoreService } from 'src/app/services/store.service';
-import { MatOption } from '@angular/material/core';
 import { MatListOption } from '@angular/material/list';
 
 @Component({
@@ -13,7 +12,7 @@ import { MatListOption } from '@angular/material/list';
 })
 export class InfoEmplComponent implements OnInit {
 
-  empl: Empl;
+  @Input() empl: Empl;
 
   loading = false;
 
@@ -27,14 +26,6 @@ export class InfoEmplComponent implements OnInit {
 
   ngOnInit() {
     this.closePanel();
-  }
-
-  getEmplInfo(empl: EmplJust) {
-    this.empl = null;
-    this.closePanel();
-    this.message = null;
-
-    this.empl = this.store.findEmplInStorage(empl.id);
   }
 
   addEquip() {

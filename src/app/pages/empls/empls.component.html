@@ -20,7 +20,7 @@
                         <button 
                             *ngFor="let empl of empls"
                             mat-list-item
-                            (click)="emplInfo.getEmplInfo(empl)"
+                            (click)="selectedEmpl = empl"
                         >
                             {{empl | initily}}<span class="text-grey"> - {{empl.tabelNumber}}</span>
                         </button>
@@ -30,7 +30,7 @@
 
         </div>
         <div class="col-5 bg-dark-50 full-height p-3">
-            <app-info-empl (update)="update()" #emplInfo></app-info-empl>
+            <app-info-empl (update)="update()" [empl]="selectedEmpl" #emplInfo></app-info-empl>
         </div>
     </div>
 </app-work>

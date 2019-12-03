@@ -1,18 +1,22 @@
 import { Empl, Equipment, EmplJust } from './types';
 
+import * as uuid from 'uuid/v4';
+
+let count = 0;
+
 export function newEmpl(): Empl {
-    return Object.create({
-        surname: '',
-        name: '',
-        patronymic: '',
+    return {
+        id: count++,
+        surname: 'Пушкин' + count++,
+        name: 'Александр',
+        patronymic: 'Сергеевич',
 
         tabelNumber: 'РГУ-',
-        placeOfResidence: '',
-        subdivision: '',
-        phone: '',
-
-        equips: []
-    });
+        placeOfResidence: 'ывп',
+        placeOfRegistration: 'test',
+        subdivision: 'выап',
+        phone: 'вап',
+    };
 }
 
 export function newEquip(holder: EmplJust): Equipment {
@@ -25,18 +29,3 @@ export function newEquip(holder: EmplJust): Equipment {
         holderId: holder.id
     };
 }
-
-class Counter {
-    private counterEmpls = 0;
-    private counterEquips = 0;
-
-    public get empls(): number {
-        return ++this.counterEmpls;
-    }
-
-    public get equips(): number {
-        return ++this.counterEquips;
-    }
-}
-
-const counter = new Counter();

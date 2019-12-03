@@ -14,6 +14,8 @@ export class EmplsComponent implements OnInit {
 
   @ViewChild(InfoEmplComponent, {static: false}) emplInfo: InfoEmplComponent;
 
+  public selectedEmpl: Empl;
+
   empls: Empl[] = [];
   openList = false;
 
@@ -25,23 +27,20 @@ export class EmplsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.store.getEmpls.subscribe(empls => {
-      this.empls = empls;
-      this.openList = true;
-    });
+    this.empls = this.store.empls;
+    this.openList = true;
   }
 
   createEmpl() {
     this.client.promptEmpl(newEmpl(), data => {
-      this.store.createEmpl(data).subscribe(() => {
-        this.update();
-      });
+      this.store.createEmpl(data);
+      this.update();
     });
   }
 
   searchEmpl() {
-    this.client.searchEmpl(data => {
-      this.emplInfo.getEmplInfo(data);
+    this.client.searchEmpl((data: Empl) => {
+      this.selectedEmpl = data;
     });
   }
 

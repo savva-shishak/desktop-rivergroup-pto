@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 // tslint:disable-next-line:no-string-literal
 const { remote } = window['require']('electron');
 const fs = remote.require('fs');
-const path = remote.require('path');
 
 let store: Store;
 
@@ -25,15 +24,9 @@ export class StoreService {
   public equips: Equipment[] = store.equips;
   public empls: Empl[] = store.empls;
 
-  public get getEquips(): Observable<Equipment[]> {
-    return new Observable<Equipment[]>(sub => {
-      sub.next(this.equips);
-    });
-  }
-
   public createEquip(equip: Equipment, holderId: number) {
     if (this.equips.length !== 0) {
-      equip.id = this.equips[this.equips.length - 1].id + 1;
+      equip.id = this.equips[0].id + 1;
     } else {
       equip.id = 1;
     }
@@ -42,6 +35,16 @@ export class StoreService {
 
     this.equips.unshift(equip);
 
+    this.saveData();
+  }
+
+  public createEmpl(empl: Empl) {
+    if (this.empls.length !== 0) {
+      empl.id = this.empls[0].id + 1;
+    } else {
+      empl.id = 1;
+    }
+    this.empls.unshift(empl);
     this.saveData();
   }
 
@@ -109,18 +112,6 @@ export class StoreService {
   public get getEmpls(): Observable<Empl[]> {
     return new Observable<Empl[]>(sub => {
       sub.next(this.empls);
-    });
-  }
-
-  public createEmpl(empl: Empl) {
-    return new Observable(() => {
-      if (this.empls.length !== 0) {
-        empl.id = this.empls[this.empls.length - 1].id + 1;
-      } else {
-        empl.id = 1;
-      }
-      this.empls.unshift(empl);
-      this.saveData();
     });
   }
 

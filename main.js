@@ -70,12 +70,12 @@ function createWindow () {
   })
 
   mainWindow.loadURL(
-    url.format({
-      pathname: path.join(__dirname, `/static/index.html`),
-      protocol: "file:",
-      slashes: true
-    })
-    //"http://localhost:4200"
+    // url.format({
+    //   pathname: path.join(__dirname, `/static/index.html`),
+    //   protocol: "file:",
+    //   slashes: true
+    // })
+    "http://localhost:4200"
   );
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
