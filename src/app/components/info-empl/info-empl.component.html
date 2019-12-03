@@ -1,0 +1,73 @@
+<div class="full-height" *ngIf="empl != null">
+
+    <div class="flex-between">
+        <span>Информация</span>
+        <button (click)="closePanel()" matTooltip="Закрыть" mat-icon-button>
+            <i class="material-icons">close</i>
+        </button>
+    </div>
+
+    <hr>
+
+    <div class="flex-between">
+        <span>Сотрудник</span>
+        <button (click)="delete()" matTooltip="Удалить сотрудника" mat-mini-fab><i class="material-icons">delete</i></button>
+    </div>
+
+    <hr>
+
+    <div class="full-width row">
+        <span class="col-6">Имя:</span>
+        <span class="col-6">{{empl.name}}</span>
+
+        <span class="col-6">Фамилия:</span>
+        <span class="col-6">{{empl.surname}}</span>
+
+        <span class="col-6">Отчество:</span>
+        <span class="col-6">{{empl.patronymic}}</span>
+
+        <span class="col-6">Табельный номер:</span>
+        <span class="col-6">{{empl.tabelNumber}}</span>
+
+        <span class="col-6">Место регистрации:</span>
+        <span class="col-6">{{empl.placeOfRegistration}}</span>
+
+        <span class="col-6">Фактическое место проживания:</span>
+        <span class="col-6">{{empl.placeOfResidence}}</span>
+
+        <span class="col-6">Телефон:</span>
+        <span class="col-6">{{empl.phone}}</span>
+    </div>
+
+    <div (click)="toUpdateDataOfEmpl()" class="flex-end">
+        <button class="mr-2" matTooltip="Изменить данные" mat-icon-button><i class="material-icons">create</i></button>
+    </div>
+
+    <hr>
+
+    <div class="flex-between">
+        <span>Оборудование:</span>
+        <div>
+            <button (click)="changeHolderOfEquips(options.selectedOptions.selected)" *ngIf="options.selectedOptions.selected.length > 0" class="mr-2" matTooltip="Передать другому сотруднику" mat-mini-fab><i class="material-icons">reply</i></button>
+            <button (click)="addEquip()" class="mr-2" matTooltip="Добавить оборудование" mat-mini-fab><i class="material-icons">add</i></button>
+        </div>
+    </div>
+
+    <div>
+        <div class="scroll-box">
+            <mat-selection-list class="scroll-box bg-light-10 mt-3" style="max-height: 300px" #options>
+                <mat-list-option *ngFor="let equip of equips" [value]="equip" [matTooltip]="'Модель: ' + equip.model + '\nИнвентарный номер: ' + equip.numInventory" class="text-white">{{ equip.name }}</mat-list-option>
+            </mat-selection-list>
+        </div>
+    </div>
+
+    <hr>
+</div>
+
+<div class="full-page flex-center" *ngIf="empl == null && message == null">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div class="full-page flex-center" *ngIf="message != null">
+    <h5 class="text-white">{{message}}</h5>
+</div>

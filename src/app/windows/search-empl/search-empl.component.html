@@ -1,0 +1,26 @@
+<h4>Поиск сотрудника</h4>
+
+<mat-grid-list class="w-100 h-100" cols="4" rowHeight="10%">
+    <!-- <mat-grid-tile colspan="2">    
+        <mat-form-field appearance="outline" class="w-100 m-2">
+            <mat-label>Фамилия</mat-label>
+            <input ([ngModel])="empl.surname" type="text" matInput>
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">    
+        <mat-form-field appearance="outline" class="w-100 m-2">
+            <mat-label>Табельный номер</mat-label>
+            <input ([ngModel])="empl.tabelNumber" type="text" matInput>
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="4">
+        <button (click)="filterEmpls()" mat-raised-button >Поиск</button>
+    </mat-grid-tile> -->
+    <mat-grid-tile colspan="4" rowspan="9">
+        <mat-action-list class="w-100 h-100">
+            <button *ngFor="let option of store.empls" mat-list-item (click)="select(option)">
+                {{ option | initily }} - {{ option.tabelNumber }}
+            </button>
+        </mat-action-list>
+    </mat-grid-tile>
+</mat-grid-list>

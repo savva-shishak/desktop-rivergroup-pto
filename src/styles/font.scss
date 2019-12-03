@@ -1,0 +1,31 @@
+@import "./variables.scss";
+
+h1, h2,
+h3 {
+    font-weight: 100;
+}
+
+h4, h5, 
+h6 {
+    font-weight: 400;
+}
+
+.text-blue {
+    color: $blue !important;
+}
+
+.text-white {
+    color: white;
+}
+
+.text-grey {
+    color: grey;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.link {
+    cursor: pointer;
+}

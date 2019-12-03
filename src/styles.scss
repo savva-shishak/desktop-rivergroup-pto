@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "./styles/variables.scss";
+@import "./styles/bg.scss";
+@import "./styles/font.scss";
+@import "./styles/layout.scss";
+@import "./styles/flex.scss";
+@import "./styles/buttom-tulls.scss";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;  overflow-x: hidden; overflow-y: hidden;}
+
+*:active {
+    outline: none !important;
+}
+
+button:active {
+    outline: none;
+}
+
+@import '../node_modules/@angular/material/theming';
+ 
+@include mat-core();
+ 
+//the first two are the custom palettes we declared above
+$my-theme-primary: mat-palette($mat-blue-grey, 400);
+$my-theme-accent: mat-palette($mat-grey, 800);
+//the third, for the warn color, is the predefined material red palette
+$my-theme-warn: mat-palette($mat-red, A700);
+ 
+$my-theme: mat-light-theme($my-theme-primary, $my-theme-accent, $my-theme-warn);
+ 
+@include angular-material-theme($my-theme);

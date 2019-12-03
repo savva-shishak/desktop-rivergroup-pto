@@ -1,0 +1,23 @@
+<h4>Данные об оборудовании</h4>
+
+<hr>
+<form [formGroup]="form" novalidate (ngSubmit)="submit()">
+    <div class="w-100">
+        <mat-form-field class="w-100">
+            <input formControlName="numInventory" matInput placeholder="Инвентарный номер">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+            <input formControlName="name" matInput placeholder="Наименование">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+            <input formControlName="model" matInput placeholder="Модель">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+            <input formControlName="numModel" matInput placeholder="Номер модели">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+            <input formControlName="serialNum" matInput placeholder="Серийный номер">
+        </mat-form-field>
+    </div>
+</form>
+<button (click)="submit()" [disabled]="form.invalid" mat-raised-button class="w-100" color="accent">Готово</button>

@@ -1,0 +1,28 @@
+@import "../../../styles.scss";
+
+.panel {
+    cursor: pointer;
+    display: grid;
+
+    grid-template-columns: 1fr 2fr 1fr;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px;
+
+    height: 80px;
+
+    text-align: center;
+    font-size: 16px;
+
+    transition: 300ms;
+    border: 1px solid white;
+
+    &:hover {
+        border-color: #D50000;
+    }
+
+    i {
+        color: #D50000;
+    }
+}

@@ -1,0 +1,25 @@
+<img class="bg-image" src="assets/bg.jpg"/>
+<div class="mask"></div>
+
+<nav 
+    mat-tab-nav-bar headerPosition="below" 
+    color="warn"
+    class="full-width bg-dark-20"
+>
+    <a mat-tab-link
+        *ngFor="let link of navLinks"
+        [routerLink]="link.link"
+        routerLinkActive #rla="routerLinkActive"
+        [active]="rla.isActive"
+        [style.opacity]="1"
+        [routerLinkActiveOptions]="{exact:true}"
+        class="text-white"
+        routerLinkActive="bg-bark-30" 
+        [matTooltip]="link.label"
+    >
+        <i [class]="link.icon"></i>
+    </a>
+</nav>
+<div class="container mt-4 bg-white full-height">
+    <ng-content></ng-content>
+</div>

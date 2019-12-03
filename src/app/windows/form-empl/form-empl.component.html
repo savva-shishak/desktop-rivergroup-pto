@@ -1,0 +1,33 @@
+<h4>Данные о сотруднике</h4>
+
+<hr>
+<form [formGroup]="emplForm" novalidate (ngSubmit)="submit()">
+    <mat-form-field class="w-100">
+        <input formControlName="snp" matInput placeholder="Фамилия имя отчество строго в таком порядке через 1 пробел">
+        <mat-error *ngIf="emplForm.controls['snp'].hasError('required') && emplForm.controls['snp'].touched">
+            Обязательно для заполнения
+        </mat-error>
+        <mat-error *ngIf="emplForm.controls['snp'].hasError('snp') && emplForm.controls['snp'].touched">
+            Проверьте корректность заполения (пример: "Пушкин Алескандр Сергеевич")
+        </mat-error>
+    </mat-form-field>
+
+    <div class="row w-100">
+        <mat-form-field class="col-6">
+            <input formControlName="tabelNumber" matInput placeholder="Табельный номер">
+        </mat-form-field>
+        <mat-form-field class="col-6">
+            <input formControlName="phone" matInput placeholder="Номер телефона">
+        </mat-form-field>
+        <mat-form-field class="col-6">
+            <input formControlName="placeOfRegistration" matInput placeholder="Место регистрации">
+        </mat-form-field>
+        <mat-form-field class="col-6">
+            <input formControlName="placeOfResidence" matInput placeholder="Фактическое место проживания">
+        </mat-form-field>
+        <mat-form-field class="col-6">
+            <input formControlName="subdivision" matInput placeholder="Подразделение">
+        </mat-form-field>
+    </div>
+</form>
+<button (click)="submit()" [disabled]="emplForm.invalid" mat-raised-button class="w-100" color="accent">Готово</button>

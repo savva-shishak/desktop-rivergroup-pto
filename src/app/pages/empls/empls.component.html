@@ -1,0 +1,36 @@
+<app-work>
+    <div class="row full-height no-gaps">
+        <div class="col-7 p-0 full-height">
+            <div class="bg-dark-50 full-width p-2">
+                <button (click)="searchEmpl()" mat-icon-button matTooltip="Поиск">
+                    <i class="material-icons">search</i>
+                </button>
+                <button (click)="createEmpl()" mat-icon-button matTooltip="Добавить сотрудника">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+
+            <div class="full-height">
+                <div *ngIf="!openList; else emplsList" class="full-height full-width flex-center">
+                    <mat-spinner></mat-spinner>
+                </div>
+
+                <ng-template #emplsList>
+                    <mat-action-list class="full-height scroll-y-auto">
+                        <button 
+                            *ngFor="let empl of empls"
+                            mat-list-item
+                            (click)="emplInfo.getEmplInfo(empl)"
+                        >
+                            {{empl | initily}}<span class="text-grey"> - {{empl.tabelNumber}}</span>
+                        </button>
+                    </mat-action-list>
+                </ng-template>
+            </div>
+
+        </div>
+        <div class="col-5 bg-dark-50 full-height p-3">
+            <app-info-empl (update)="update()" #emplInfo></app-info-empl>
+        </div>
+    </div>
+</app-work>

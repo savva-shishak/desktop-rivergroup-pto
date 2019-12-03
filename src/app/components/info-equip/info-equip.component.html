@@ -1,0 +1,60 @@
+<ng-container *ngIf="equip != null">
+    <div class="flex-between">
+        <span>Информация</span>
+        <button (click)="closePanel()" mat-icon-button>
+            <i class="material-icons">close</i>
+        </button>
+    </div>
+
+    <hr>
+
+    <div class="flex-between">
+        <span>Оборудование</span>
+        <button (click)="delete()" matTooltip="Удалить" mat-icon-button><i class="material-icons">delete</i></button>
+    </div>
+
+    <hr>
+
+    <div class="full-width row">
+        <span class="col-6">Инвентарный номер:</span>
+        <span class="col-6">{{equip.numInventory}}</span>
+
+        <span class="col-6">Наименование:</span>
+        <span class="col-6">{{equip.name}}</span>
+
+        <span class="col-6">Марка:</span>
+        <span class="col-6">{{equip.model}}</span>
+
+        <span class="col-6">Номер модели:</span>
+        <span class="col-6">{{equip.numModel}}</span>
+
+        <span class="col-6">Серийный номер:</span>
+        <span class="col-6">{{equip.serialNum}}</span>
+    </div>
+
+    <div class="flex-end">
+        <button (click)="change()" matTooltip="Изменить данные" mat-icon-button><i class="material-icons">create</i></button>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <span class="col-6">Держатель:</span>
+        <span class="col-6">{{holder | initily}}</span>
+    </div>
+
+    <div class="flex-end">
+        <button (click)="exchangeHolder()" matTooltip="Передать другому сотруднику" mat-mini-fab><i class="material-icons">reply</i></button>
+    </div>
+
+    <hr>
+
+</ng-container>
+
+<div class="full-page flex-center" *ngIf="equip == null && message == null">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div class="full-page flex-center" *ngIf="message != null">
+    <h5 class="text-white">{{message}}</h5>
+</div>
